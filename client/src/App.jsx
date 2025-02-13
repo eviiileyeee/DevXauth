@@ -26,9 +26,9 @@ function App() {
   return (
     <>
 
-            <ThemeProvider>
-            <BrowserRouter>
-            <AuthProvider>
+      <ThemeProvider>
+        <BrowserRouter>
+          <AuthProvider>
             <Routes>
               {/* Public routes */}
               <Route path="/login" element={<LoginPage />} />
@@ -49,11 +49,11 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-             
 
-            
-             
-             
+
+
+
+
               {/* 404 route */}
               <Route path="*" element={
                 <DashboardLayout>
@@ -66,10 +66,9 @@ function App() {
                 </DashboardLayout>
               } />
             </Routes>
-            </AuthProvider>
-            </BrowserRouter>
-            </ThemeProvider>
-
+          </AuthProvider>
+        </BrowserRouter>
+      </ThemeProvider>
     </>
   )
 }
