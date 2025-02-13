@@ -4,19 +4,17 @@ import { AuthProvider } from './context/AuthContext';
 import ProfilePage from './pages/ProfilePage';
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from './pages/Register.jsx';
-import Navbar from "./component/Navbar";
 import Hero from "./pages/Hero";
 import Footer from "./component/Footer";
+import Navbar from "./component/Navbar.jsx";
 import "./App.css";
 import { ThemeProvider } from './context/ThemeContext/ThemeContext';
 import ProtectedRoute from './component/ProtectedRoute';
 
 
-
-
 const DashboardLayout = ({ children }) => (
   <div id="main" className="relative overflow-hidden min-h-screen">
-    <Navbar />
+    <Navbar/>
     <main className="min-h-screen">{children}</main>
     <Footer />
   </div>
