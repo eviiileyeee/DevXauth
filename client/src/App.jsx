@@ -1,7 +1,15 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext';
+import ProfilePage from './pages/ProfilePage';
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from './pages/Register.jsx';
 import Navbar from "./components/Navbar";
 import Hero from "./pages/Hero";
 import Footer from "./components/Footer";
+import "./index.css";
+import { ThemeProvider } from './context/ThemeContext/ThemeContext';
+
 
 
 
@@ -13,6 +21,7 @@ const DashboardLayout = ({ children }) => (
   </div>
 );
 function App() {
+  
 
   return (
     <>
