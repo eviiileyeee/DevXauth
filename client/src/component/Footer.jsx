@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from "../assets/1734760408581.jpeg";
 import { 
   Github, 
   Linkedin, 
@@ -41,7 +40,7 @@ const Footer = () => {
           <FooterSection title="About Echelon Dev">
             <div className="mb-4">
               <img 
-                src={logo} 
+                src=""
                 alt="Echelon Dev Logo" 
                 className="h-10 mb-3"
               />

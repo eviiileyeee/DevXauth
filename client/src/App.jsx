@@ -4,11 +4,12 @@ import { AuthProvider } from './context/AuthContext';
 import ProfilePage from './pages/ProfilePage';
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from './pages/Register.jsx';
-import Navbar from "./components/Navbar";
+import Navbar from "./component/Navbar";
 import Hero from "./pages/Hero";
-import Footer from "./components/Footer";
-import "./index.css";
+import Footer from "./component/Footer";
+import "./App.css";
 import { ThemeProvider } from './context/ThemeContext/ThemeContext';
+import ProtectedRoute from './component/ProtectedRoute';
 
 
 
