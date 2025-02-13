@@ -1,30 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Bell, User, Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import logo from "../assets/1734760408581.jpeg";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('');
-  const { user, logout } = useAuth();
-  const { darkMode, toggleDarkMode } = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const path = location.pathname;
-    if (path === '/') setActiveTab('home');
-    else if (path === '/workshops') setActiveTab('workshops');
-    else if (path === '/about') setActiveTab('about');
-    else if (path === '/speakers') setActiveTab('speakers');
-    else if (path === '/visit') setActiveTab('visit');
-  }, [location]);
-
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-  };
-
+ 
   const navLinks = [
     { name: 'Home', path: '/', id: 'home' },
     { name: 'About', path: '/about', id: 'about' },
@@ -39,7 +23,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <span className="text-[var(--color-text)] text-xl font-extrabold uppercase tracking-wide">
-                EVENTFLOW
+                DevXcommunity
               </span>
             </Link>
           </div>
@@ -128,16 +112,6 @@ const Navbar = () => {
                 {link.name}
               </button>
             ))}
-
-            <button
-              onClick={() => {
-                navigate("/tickets");
-                setIsMobileMenuOpen(false);
-              }}
-              className="block w-full text-left text-[var(--color-primary)] text-xl font-bold uppercase underline"
-            >
-              BUY TICKETS!
-            </button>
           </div>
         </div>
       )}
