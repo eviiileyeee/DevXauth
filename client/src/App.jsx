@@ -21,15 +21,11 @@ const DashboardLayout = ({ children }) => (
   </div>
 );
 function App() {
-  
+
 
   return (
     <>
-<<<<<<< HEAD
-      <div className='flex justify-center items-center h-screen'>
-        <h1> Welcome to dev X </h1>
-      </div>
-=======
+
             <ThemeProvider>
             <BrowserRouter>
             <AuthProvider>
@@ -74,7 +70,6 @@ function App() {
             </BrowserRouter>
             </ThemeProvider>
 
->>>>>>> 8ea51c70a506227eda56417a77e2daa9d4c5f2e4
     </>
   )
 }
