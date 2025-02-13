@@ -60,27 +60,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
-            {user ? (
-              <>
-                <button
-                  className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => navigate("/notification")}
-                >
-                  <Bell className="h-6 w-6 text-gray-600 dark:text-gray-300" />
-                </button>
-                <button
-                  className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
-                  onClick={() => navigate("/profile")}
-                >
-                  <img
-                    className="h-10 w-10 object-cover rounded-full"
-                    src={user.profileImage || "https://tse3.mm.bing.net/th?id=OIP.JttmcrrQ9_XqrY60bFEfgQHaHa&pid=Api&P=0&h=180"}
-                    alt="User Avatar"
-                  />
-                </button>
-              </>
-            ) : (
-              <>
+           
                 <Link
                   to="/login"
                   className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400 transition-colors"
@@ -93,8 +73,7 @@ const Navbar = () => {
                 >
                   Sign Up
                 </Link>
-              </>
-            )}
+           
           </div>
 
           <div className="md:hidden flex items-center">
@@ -130,15 +109,7 @@ const Navbar = () => {
               </button>
             ))}
 
-            <button
-              onClick={() => {
-                navigate("/tickets");
-                setIsMobileMenuOpen(false);
-              }}
-              className="block w-full text-left text-[var(--color-primary)] text-xl font-bold uppercase underline"
-            >
-              BUY TICKETS!
-            </button>
+         
           </div>
         </div>
       )}
