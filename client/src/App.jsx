@@ -13,7 +13,7 @@ import ProtectedRoute from './component/ProtectedRoute';
 
 
 const DashboardLayout = ({ children }) => (
-  <div id="main" className="relative overflow-hidden min-h-screen">
+  <div id="main" className="relative overflow-hidden min-h-screen ">
     <Navbar/>
     <main className="min-h-screen">{children}</main>
     <Footer />
@@ -37,7 +37,6 @@ function App() {
                   <Hero />
                 </DashboardLayout>
               } />
-
               <Route path="/login" element={<LoginPage />} />
 
               <Route
@@ -48,10 +47,6 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-
-
-
-
 
               {/* 404 route */}
               <Route path="*" element={
