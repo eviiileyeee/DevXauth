@@ -34,9 +34,9 @@ const Banner = () => {
         </div>
         <div className="md:w-1/2 flex justify-center">
           <img
-            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&auto=format&fit=crop&q=80"
+            src="/logo.png"
             alt="Community Collaboration"
-            className="w-3/4 md:w-2/3 lg:w-1/2 max-w-xs rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-300"
+            className="w-3/4 md:w-2/3 lg:w-1/2 max-w-xs rounded-full shadow-2xl transform hover:scale-105 transition-transform duration-300"
           />
         </div>
       </div>
