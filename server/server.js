@@ -15,7 +15,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
 app.get("/",(req,res)=>   res.send("this is backend of DevXauth"));
+app.use("/api/users",authRoutes);
 
+
+// Error handling
+app.use(errorHandler);
 
 
 
