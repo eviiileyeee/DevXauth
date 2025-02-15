@@ -37,7 +37,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
               <span className={`text-4xl font-extrabold uppercase tracking-wide font-['FoundersGrotesk-Semibold'] ${darkMode ? 'text-white' : 'text-black'}`}>
-                DEV X
+                DEV X HUB
               </span>
             </Link>
           </div>
