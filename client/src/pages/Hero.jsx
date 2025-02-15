@@ -23,9 +23,14 @@ const Banner = () => {
             </button>
           </div>
         </div>
-        <div className="md:w-1/2">
-          <img src="../assets/logo.png" alt="Community Collaboration" className="rounded-lg shadow-2xl" />
+        <div className="md:w-1/2 flex justify-center">
+          <img
+            src="/logo.png"
+            alt="Community Collaboration"
+            className="w-3/4 md:w-2/3 lg:w-1/2 max-w-xs rounded-full shadow-2xl"
+          />
         </div>
+
       </div>
 
       <div className="wave-divider">
@@ -44,8 +49,8 @@ const About = () => {
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-12">About DevXHub</h2>
         <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2 md:pr-10 mb-10 md:mb-0">
-            <img src="/api/placeholder/500/400" alt="About DevXHub" className="rounded-lg shadow-lg" />
+          <div className="md:w-1/2 md:pr-10 mb-10 md:mb-0 mr-10">
+            <img src="/community.png" alt="About DevXHub" className="rounded-lg " />
           </div>
           <div className="md:w-1/2">
             <p className="text-lg mb-6">
@@ -92,19 +97,19 @@ const Events = () => {
       title: "Web Development Workshop",
       date: "March 15, 2025",
       description: "Learn modern web development techniques with React and Node.js",
-      image: "/api/placeholder/400/250"
+      image: "/workshop.png"
     },
     {
       title: "Tech Talk: AI Innovations",
       date: "April 5, 2025",
       description: "Exploring the latest advancements in artificial intelligence",
-      image: "/api/placeholder/400/250"
+      image: "/techtalk.png"
     },
     {
       title: "Annual Hackathon",
       date: "May 20-22, 2025",
       description: "48-hour coding challenge with amazing prizes and networking",
-      image: "/api/placeholder/400/250"
+      image: "/hackathon.png"
     }
   ];
 
@@ -146,25 +151,25 @@ const Team = () => {
     {
       name: "Alex Johnson",
       role: "Founder & Lead Developer",
-      image: "/api/placeholder/300/300",
+      image: "/member1.png",
       social: { github: "#", twitter: "#" }
     },
     {
       name: "Sarah Kim",
       role: "Community Manager",
-      image: "/api/placeholder/300/300",
+      image: "/member2.png",
       social: { github: "#", twitter: "#" }
     },
     {
       name: "Dave Rodriguez",
       role: "Technical Mentor",
-      image: "/api/placeholder/300/300",
+      image: "/member3.png",
       social: { github: "#", twitter: "#" }
     },
     {
       name: "Michelle Chen",
       role: "Event Coordinator",
-      image: "/api/placeholder/300/300",
+      image: "/member4.png",
       social: { github: "#", twitter: "#" }
     }
   ];
@@ -219,35 +224,6 @@ const JoinUs = () => {
             <a href="#" className="flex items-center justify-center bg-transparent hover:bg-white hover:text-blue-900 text-white font-bold py-3 px-6 border-2 border-white rounded-lg transition">
               <FaGithub className="mr-2" /> Follow on GitHub
             </a>
-          </div>
-        </div>
-
-        <div className="max-w-lg mx-auto">
-          <div className="bg-white rounded-lg p-8 shadow-xl">
-            <h3 className="text-2xl font-bold text-gray-800 mb-4">Stay Updated</h3>
-            <p className="text-gray-600 mb-6">
-              Subscribe to our newsletter to get the latest updates on events,
-              projects, and community news.
-            </p>
-            <form className="space-y-4">
-              <div>
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  placeholder="Your Email Address"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                />
-              </div>
-              <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg transition">
-                Subscribe
-              </button>
-            </form>
           </div>
         </div>
       </div>
