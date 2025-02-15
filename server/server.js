@@ -3,7 +3,8 @@ const cors = require('cors');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
 require('dotenv').config();
-const authRoutes = require("./routes/user.js")
+const authRoutes = require("./routes/user.js");
+const errorHandler = require("./middleware/errorHandler.js")
 
 
 const app = express();
