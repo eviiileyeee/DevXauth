@@ -48,6 +48,10 @@ const userSchema = new mongoose.Schema({
   githubUrl: String,
   linkedinUrl: String,
   instagramUrl: String,
+  varified : {
+    type : Boolean,
+    default : false,
+  }
 }, {
   timestamps: true
 });

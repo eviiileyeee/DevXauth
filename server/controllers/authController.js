@@ -1,12 +1,11 @@
 const User = require('../models/userModel');
-const bcryptjs = require('bcryptjs'); // Change to bcryptjs for consistency
 const jwt = require('jsonwebtoken');
-const verifyToken = require('../middleware/authMiddleware');
 const { v4: uuidv4 } = require('uuid');
-const cloudinary = require("../utils/cloudinary"); // Cloudinary utility
-const mongoose = require('mongoose'); // Mongoose utility
-const { uploadToCloudinary, deleteFromCloudinary } = require('../utils/cloudinary'); // Assuming your cloudinary functions are in this file
-const fs = require('fs');
+const mongoose = require('mongoose');
+const { uploadToCloudinary, deleteFromCloudinary } = require('../utils/cloudinary');
+const Token = require('../models/token');
+const sendEmail = require("../utils/sendEmail");
+const crypto = require("crypto")
 
 // Generate JWT Token
 const generateToken = (id) => {
@@ -21,6 +20,7 @@ exports.register = async (req, res) => {
   try {
     const { username, password, email } = req.body;
     const profileImage = "https://tse3.mm.bing.net/th?id=OIP.JttmcrrQ9_XqrY60bFEfgQHaHa&pid=Api&P=0&h=180";
+
     // Check for missing fields
     if (!username || !email || !password) {
       return res.status(400).json({ message: 'All fields are required.' });
@@ -44,10 +44,24 @@ exports.register = async (req, res) => {
       email,
       profileImage
     });
+    const NewUser = await newUser.save();
 
-    await newUser.save();
 
-    res.status(201).json({ message: 'User registered successfully' });
+    const token = new Token({
+      userId: NewUser._id,
+      token: crypto.randomBytes(32).toString('hex'),
+    });
+    await token.save();
+
+    const verificationLink = `${process.env.CLIENT_URL}/verify/${token.token}`;
+    await sendEmail(
+      NewUserUser.email,
+      'Email Verification',
+      `Click the link to verify your email: ${verificationLink}`,
+      `<p>Click the link to verify your email: <a href="${verificationLink}">Verify Email</a></p>`
+    );
+
+    res.status(201).json({ message: 'User registered successfully , check mail for validation' });
   } catch (error) {
     console.error('Error registering user:', error);
     res.status(500).json({
@@ -182,21 +196,21 @@ exports.uploadDetails = async (req, res) => {
     );
 
     await session.commitTransaction();
-    res.status(200).json({ 
-      message: "User updated successfully", 
-      user: updatedUser 
+    res.status(200).json({
+      message: "User updated successfully",
+      user: updatedUser
     });
 
   } catch (error) {
     console.error("❌ Error:", error);
     await session?.abortTransaction();
-    
+
     if (error.message === "User not found") {
       res.status(404).json({ message: "User not found" });
     } else {
-      res.status(500).json({ 
-        message: "Update failed", 
-        error: error.message 
+      res.status(500).json({
+        message: "Update failed",
+        error: error.message
       });
     }
 
@@ -220,5 +234,36 @@ exports.getMe = async (req, res) => {
   } catch (error) {
     console.error('Error fetching user data:', error.message);
     res.status(500).json({ message: 'Server error' });
+  }
+};
+
+
+exports.controllVerify = async (req, res) => {
+  try {
+    const { id, token } = req.params;
+
+    // Find user
+    const user = await User.findById(id);
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid user ID' });
+    }
+
+    // Find token
+    const tokenRecord = await Token.findOne({ userId: id, token });
+    if (!tokenRecord) {
+      return res.status(400).json({ message: 'Invalid or expired token' });
+    }
+
+    // Verify user
+    user.verified = true;
+    await user.save();
+
+    // Remove token after verification
+    await Token.findByIdAndDelete(tokenRecord._id);
+
+    res.status(200).json({ message: 'Email verified successfully' });
+  } catch (error) {
+    console.error('Error verifying token:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
   }
 };
