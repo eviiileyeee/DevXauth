@@ -39,7 +39,7 @@ const ProfilePage = () => {
     if (!localStorage.getItem('token')) {
       navigate('/login');
     }
-  }, [navigate]);
+  }, [navigate , logout]);
 
   
   const SidebarLink = ({ icon: Icon, text, tab }) => (
@@ -56,8 +56,6 @@ const ProfilePage = () => {
     </button>
   );
 
-
- 
 
   return (
     <div className={darkMode ? 'dark' : ''}>
