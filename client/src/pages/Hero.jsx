@@ -256,7 +256,7 @@ const JoinUs = () => {
   );
 };
 
-const App = () => {
+const Hero = () => {
   return (
     <div className="bg-white">
       <Banner />
@@ -268,4 +268,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Hero;
