@@ -55,7 +55,7 @@ exports.register = async (req, res) => {
 
     const verificationLink = `${process.env.CLIENT_URL}/verify/${token.token}`;
     await sendEmail(
-      NewUserUser.email,
+      NewUser.email,
       'Email Verification',
       `Click the link to verify your email: ${verificationLink}`,
       `<p>Click the link to verify your email: <a href="${verificationLink}">Verify Email</a></p>`
@@ -267,3 +267,27 @@ exports.controllVerify = async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 };
+
+exports.getAllUsers = async(req,res) => {
+  try{
+    const users = await User.find();
+    res.status(200).json(users)
+  }
+  catch (err){
+    res.status(500).json({ message : err })
+  }
+}
+
+
+exports.deleteOneUser = async (req,res) => {
+  const email = req.params.email;
+  try{
+       const user = await User.findOneAndDelete({email : email});
+       if (!user){
+        res.status(404).json({msg : "user not found"});
+       }
+       res.status(200).json({msg : "deleted succesfully"});
+  } catch (err){
+       res.status(500).json({msg:"internal server error"});
+  }
+}

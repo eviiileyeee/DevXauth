@@ -4,7 +4,7 @@ const upload = require('../middleware/uploadMiddleware');
 const { 
     register,
     login,
-    deleteAllUsers,
+    deleteOneUser,
     getAllUsers,
     getMe,
     uploadDetails,
@@ -17,9 +17,9 @@ const router = express.Router();
 
 router.post('/register', register);
 router.post('/login', login);
-//router.get('/get-all-users', getAllUsers);
+router.get('/get-all-users', getAllUsers);
 router.put("/uploadDetails/:id", upload.single("profileImage"), protect, uploadDetails);
 router.get("/:id/verify/:token", controllVerify);
 router.get('/me', protect, getMe);
-
+router.delete("/delete/:email", deleteOneUser);
 module.exports = router;
